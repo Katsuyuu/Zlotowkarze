@@ -1,0 +1,21 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Main";
+}
+
+<body style="background-image: url('../../App_Images/whoa.png'); background-repeat:no-repeat;">
+    <div class="col col-lg-offset-7" style="margin-top: 40px; text-align: center;">
+        <p style="font-style: italic; font-size: 26px; font-family: 'Comic Sans MS'">Od stówki do złotówki ...</p>
+        <img src="~/App_Images/logo.png" alt="logo" />
+        <h2 style="font-size: 86px;">Podaj nick:</h2><br />
+        <label for="Nickname"></label>
+        <form method="get">
+            <input type="text" id="Nickname" /><br /><br />
+            <input type="submit" value="No to gramy!" />
+        </form>
+    </div>
+</body>
