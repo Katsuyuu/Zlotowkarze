@@ -134,12 +134,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Images\challenge.jpg" />
-    <Content Include="App_Images\kelner.png" />
+    <Content Include="App_Images\challenge-lewo.png" />
+    <Content Include="App_Images\challenge-prawo.png" />
+    <Content Include="App_Images\kelner-lewo.png" />
+    <Content Include="App_Images\kelner-prawo.png" />
     <Content Include="App_Images\logo.png" />
     <Content Include="App_Images\sir.png" />
     <Content Include="App_Images\whoa.png" />
     <Content Include="App_Images\yay.png" />
+    <Content Include="App_Images\zlotowka.png" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\EntityFramework.dll" />

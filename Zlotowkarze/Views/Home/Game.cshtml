@@ -6,36 +6,75 @@
 @{
     ViewBag.Title = "Game";
 }
+<head>
+    <title>Game</title>
 
+    <style>
+        .answer-button {
+            height: 100px; 
+            width: 300px; 
+            margin: 20px 10px 0px 10px; 
+            background-color: white; 
+            border: solid 8px; 
+            border-color: black;
+        }
+
+        .question-box {
+            margin: 0px 0px 0px 0px;
+            padding: 10px 10px 10px 10px;
+            height: 174px; 
+            width: 500px; 
+            border: solid 12px; 
+            border-color: black; 
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .coin-box {
+            margin: 0px 0px 0px 80px;
+            padding: 0px 0px 0px 0px;
+            width: 415px;
+            height: 174px;
+            border: solid 12px;
+            border-color: black;
+        }
+    </style>
+</head>
 
 <body>
-  <div class="col col-lg-12" style="margin-left: 70px;">
-      <div class="col" style="padding-left: 0px; padding-right: 0px;">
-          <img src="~/App_Images/sir.png" style="width: 120px; height: 160px; float: left;" /> 
-          <p style="margin-top: 20px; height: 120px; width: 500px; border: solid; border-color: black; float: left; margin-left: 20px; text-align: center;">
-              Treśc pytania
-          </p>
-          <!-- <img src="~/App_Images/kelner.png" style="height:200px; width: 160px;"/> -->
-      </div>
-      <div style="clear: both;"></div>
-      <div class="col" style="margin-top: 70px;"></div>
-      <div class="col col-lg-10">
-          <div class="col col-lg-6">
-              <img src="~/App_Images/challenge.jpg" style="height: 160px; width: 100px;" />
-              <input type="submit" value="Odpowiedz nr 1" style="height: 80px; width: 700px; margin-top: 20px; background-color: white; border: solid 8px; border-color: black;" />
-          </div>
-          <div class="col col-lg-6">
-              <img src="~/App_Images/challenge.jpg" style="height: 160px; width: 100px;" />
-              <input type="submit" value="Odpowiedz nr 2" style="height: 80px; width: 700px; margin-top: 20px; background-color: white; border: solid 8px; border-color: black;"  />
-          </div>
-          <div class="col col-lg-6">
-              <img src="~/App_Images/challenge.jpg" style="height: 160px; width: 100px;" /> 
-              <input type="submit" value="Odpowiedz nr 3" style="height: 80px; width: 700px; margin-top: 20px; background-color: white; border: solid 8px; border-color: black;" />
-          </div>
-          <div class="col col-lg-6">
-              <img src="~/App_Images/challenge.jpg" style="height: 160px; width: 100px;" />
-              <input type="submit" value="Odpowiedz nr 4" style="height: 80px; width: 700px; margin-top: 20px; background-color: white; border: solid 8px; border-color: black;" />
-          </div>
-      </div>
-  </div>
+    <div class="container" style="margin-left: 50px; margin-right: 10px;">
+        <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" /> 
+        <div class="col col-lg-5 question-box">
+            Treść pytania
+        </div>
+        <div class="col col-lg-5 coin-box">
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+            <img src="~/App_Images/zlotowka.png" />
+        </div>
+    </div>
+    <div class="col col-lg-12" style="margin-top: 50px;"></div>
+    <div class="col col-lg-5 col-lg-offset-1">
+        <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
+        <input type="submit" value="Odpowiedź nr 1" class="answer-button" />
+    </div>
+    <div class="col col-lg-5 col-lg-offset-1">
+        <input type="submit" value="Odpowiedź nr 2" class="answer-button" />
+        <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
+    </div>
+    <div class="col col-lg-6" style="margin-top: 40px;"></div>
+    <div class="col col-lg-6" style="margin-top: 40px;"></div>
+    <div class="col col-lg-5 col-lg-offset-1">
+        <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
+        <input type="submit" value="Odpowiedź nr 3" class="answer-button" />
+    </div>
+    <div class="col col-lg-5 col-lg-offset-1">
+        <input type="submit" value="Odpowiedź nr 4" class="answer-button" />
+        <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
+    </div>
 </body>

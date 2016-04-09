@@ -1,33 +1,10 @@
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Zlotowkarze.dll.config
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Zlotowkarze.dll
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Zlotowkarze.pdb
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Antlr3.Runtime.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Newtonsoft.Json.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Helpers.dll
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Mvc.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Optimization.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Razor.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.Deployment.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.Razor.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\WebGrease.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Helpers.xml
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Mvc.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Optimization.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.Razor.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.Deployment.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\System.Web.WebPages.Razor.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Antlr3.Runtime.pdb
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\Newtonsoft.Json.xml
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\obj\Debug\Zlotowkarze.dll
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\obj\Debug\Zlotowkarze.pdb
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\EntityFramework.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\EntityFramework.SqlServer.dll
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\EntityFramework.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\bin\EntityFramework.SqlServer.xml
-C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze\Zlotowkarze\obj\Debug\Zlotowkarze.csprojResolveAssemblyReference.cache
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze - CF\Zlotowkarze\bin\Zlotowkarze.dll.config
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze - CF\Zlotowkarze\bin\Zlotowkarze.dll
 C:\Users\Adrian\Desktop\Projekty\Sem_VI\Zlotowkarze - CF\Zlotowkarze\bin\Zlotowkarze.pdb
