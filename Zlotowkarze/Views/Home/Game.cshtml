@@ -1,4 +1,5 @@
-﻿
+﻿@using Zlotowkarze.Models
+@model IEnumerable<Question>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -45,7 +46,12 @@
     <div class="container" style="margin-left: 50px; margin-right: 10px;">
         <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" /> 
         <div class="col col-lg-5 question-box">
-            Treść pytania
+            @foreach (var q in Model)
+            {
+                <h4>@q.Content</h4>
+
+            }
+            
         </div>
         <div class="col col-lg-5 coin-box">
             <img src="~/App_Images/zlotowka.png" />
