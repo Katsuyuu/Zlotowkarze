@@ -7,6 +7,6 @@ namespace Zlotowkarze.Models
 {
     public class Login
     {
-        public string Nickname;
+        public string Nickname { get; set; }
     }
 }

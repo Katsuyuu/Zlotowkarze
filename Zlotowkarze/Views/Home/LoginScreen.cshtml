@@ -1,4 +1,5 @@
-﻿
+﻿@model Zlotowkarze.Models.Login
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,14 +9,20 @@
 }
 
 <body style="background-image: url('../../App_Images/whoa.png'); background-repeat:no-repeat;">
-    <div class="col col-lg-offset-7" style="margin-top: 40px; text-align: center;">
+    <div class="col col-lg-offset-7 center-block" style="margin-top: 40px; text-align: center;">
         <p style="font-style: italic; font-size: 26px; font-family: 'Comic Sans MS'">Od stówki do złotówki ...</p>
         <img src="~/App_Images/logo.png" alt="logo" />
         <h2 style="font-size: 86px;">Podaj nick:</h2><br />
-        <label for="Nickname"></label>
-        <form method="get">
-            <input type="text" id="Nickname" /><br /><br />
-            <input type="submit" value="No to gramy!" />
-        </form>
+        @using (Html.BeginForm())
+        {
+            <div class="text-center">
+                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control col col-lg-offset-3" } })
+                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+            </div>
+            <br />
+        <div class="form-group">
+            <input type="submit" value="Game" class="btn btn-primary" />
+        </div>
+        }
     </div>
 </body>

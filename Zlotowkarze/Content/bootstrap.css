@@ -6813,4 +6813,10 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+
+  .center-block {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+  }
 }
