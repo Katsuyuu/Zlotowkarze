@@ -13,12 +13,27 @@ namespace Zlotowkarze.Controllers
         QuestionContext db = new QuestionContext();
         string Nickname = "";
 
+        [HttpGet]
         public ActionResult LoginScreen()
         {
             return View();
         }
 
         [HttpPost]
+        public ActionResult LoginScreen(Login log)
+        {
+
+            if (ModelState.IsValid)
+            {
+                return View("Game", log);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        /*[HttpPost]
         public ActionResult Game([Bind(Include = "Nickname")] Login login)
         {
             if (ModelState.IsValid)
@@ -29,7 +44,7 @@ namespace Zlotowkarze.Controllers
             }
 
             return View();
-        }
+        }*/
 
         public ActionResult Game()
         {

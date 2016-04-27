@@ -16,12 +16,15 @@
         @using (Html.BeginForm())
         {
             <div class="text-center">
-                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control col col-lg-offset-3" } })
-                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+                <div> @Html.ValidationSummary() </div>
+                Podaj nick: <br /> <br />
+                @Html.TextBoxFor(x => x.Nickname)
+               <!-- Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { class = "form-control col col-lg-offset-3" } })
+                Html.ValidationMessageFor(model => model.Nickname, "", new { class = "text-danger" }) -->
             </div>
             <br />
         <div class="form-group">
-            <input type="submit" value="Game" class="btn btn-primary" />
+            <input type="submit" value="No to gramy!" class="btn btn-primary" />
         </div>
         }
     </div>
