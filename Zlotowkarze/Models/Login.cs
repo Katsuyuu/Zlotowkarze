@@ -8,7 +8,7 @@ namespace Zlotowkarze.Models
 {
     public class Login
     {
-        [Required(ErrorMessage = "Podaj Nick! baranie.")]
+        [Required()]
         public string Nickname { get; set; }
     }
 }

@@ -12,39 +12,30 @@ namespace Zlotowkarze.Controllers
     {
         QuestionContext db = new QuestionContext();
         string Nickname = "";
-
+        
         [HttpGet]
         public ActionResult LoginScreen()
         {
             return View();
         }
+        
 
         [HttpPost]
-        public ActionResult LoginScreen(Login log)
+        public ActionResult LoginScreen(Login login)
         {
+            Random rand = new Random();
+            int randomQuestion = rand.Next(1, 101);
 
             if (ModelState.IsValid)
             {
-                return View("Game", log);
+                this.Nickname = login.Nickname;
+                return View("Game", db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
             }
             else
             {
                 return View();
             }
         }
-
-        /*[HttpPost]
-        public ActionResult Game([Bind(Include = "Nickname")] Login login)
-        {
-            if (ModelState.IsValid)
-            {
-                this.Nickname = login.Nickname;
-        
-                return RedirectToAction("Game");
-            }
-
-            return View();
-        }*/
 
         public ActionResult Game()
         {

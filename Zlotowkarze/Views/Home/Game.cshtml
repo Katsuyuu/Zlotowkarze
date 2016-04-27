@@ -41,6 +41,29 @@
             border-color: black;
         }
     </style>
+
+    <script type="text/javascript">
+        function OnAnswer1Click()
+        {
+            alert("Wybrano odpowiedz nr 1");
+            location.reload();
+        }
+
+        function OnAnswer2Click() {
+            alert("Wybrano odpowiedz nr 2");
+            location.reload();
+        }
+
+        function OnAnswer3Click() {
+            alert("Wybrano odpowiedz nr 3");
+            location.reload();
+        }
+
+        function OnAnswer4Click() {
+            alert("Wybrano odpowiedz nr 4");
+            location.reload();
+        }
+    </script>
 </head>
 
 <body>
@@ -63,20 +86,20 @@
     <div class="col col-lg-12" style="margin-top: 50px;"></div>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
-        <input type="submit" value="Odpowiedź nr 1" class="answer-button" />
+        <input type="submit" value="Odpowiedź nr 1" class="answer-button" onclick="OnAnswer1Click()"/>
     </div>
     <div class="col col-lg-5 col-lg-offset-1">
-        <input type="submit" value="Odpowiedź nr 2" class="answer-button" />
+        <input type="submit" value="Odpowiedź nr 2" class="answer-button" onclick="OnAnswer2Click()" />
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
     <div class="col col-lg-6" style="margin-top: 40px;"></div>
     <div class="col col-lg-6" style="margin-top: 40px;"></div>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
-        <input type="submit" value="Odpowiedź nr 3" class="answer-button" />
+        <input type="submit" value="Odpowiedź nr 3" class="answer-button" onclick="OnAnswer3Click()" />
     </div>
     <div class="col col-lg-5 col-lg-offset-1">
-        <input type="submit" value="Odpowiedź nr 4" class="answer-button" />
+        <input type="submit" value="Odpowiedź nr 4" class="answer-button" onclick="OnAnswer4Click()" />
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
 </body>

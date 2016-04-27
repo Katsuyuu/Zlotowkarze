@@ -8,6 +8,7 @@
     ViewBag.Title = "Main";
 }
 
+
 <body style="background-image: url('../../App_Images/whoa.png'); background-repeat:no-repeat;">
     <div class="col col-lg-offset-7 center-block" style="margin-top: 40px; text-align: center;">
         <p style="font-style: italic; font-size: 26px; font-family: 'Comic Sans MS'">Od stówki do złotówki ...</p>
@@ -16,11 +17,9 @@
         @using (Html.BeginForm())
         {
             <div class="text-center">
-                <div> @Html.ValidationSummary() </div>
-                Podaj nick: <br /> <br />
+                @Html.ValidationSummary(true, "Ty buntowniku!\n Mimo wszystko musisz podać swój Nickname :)", htmlAttributes: new { @class = "alert alert-info h4"})
                 @Html.TextBoxFor(x => x.Nickname)
-               <!-- Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { class = "form-control col col-lg-offset-3" } })
-                Html.ValidationMessageFor(model => model.Nickname, "", new { class = "text-danger" }) -->
+
             </div>
             <br />
         <div class="form-group">
