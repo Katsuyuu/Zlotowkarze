@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Zlotowkarze.Models;
 using Zlotowkarze.Models.DAL;
+using Zlotowkarze.ViewModel;
 
 namespace Zlotowkarze.Controllers
 {
@@ -25,11 +26,12 @@ namespace Zlotowkarze.Controllers
         {
             Random rand = new Random();
             int randomQuestion = rand.Next(1, 101);
+            GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
 
             if (ModelState.IsValid)
             {
                 this.Nickname = login.Nickname;
-                return View("Game", db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
+                return View("Game", viewModel);
             }
             else
             {
@@ -41,8 +43,9 @@ namespace Zlotowkarze.Controllers
         {
             Random rand = new Random();
             int randomQuestion = rand.Next(1, 101);
+            GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
 
-            return View(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
+            return View(viewModel);
         }
     }
 }

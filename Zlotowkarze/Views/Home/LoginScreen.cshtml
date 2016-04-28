@@ -16,10 +16,9 @@
         <h2 style="font-size: 86px;">Podaj nick:</h2><br />
         @using (Html.BeginForm())
         {
-            <div class="text-center">
-                @Html.ValidationSummary(true, "Ty buntowniku!\n Mimo wszystko musisz podać swój Nickname :)", htmlAttributes: new { @class = "alert alert-info h4"})
+            <div class="text-center" data-dissmiss="alert">
+                @Html.ValidationSummary(true, "Ty buntowniku! Mimo wszystko musisz podać swój Nickname :)", htmlAttributes: new { @class = "alert alert-info h5"})
                 @Html.TextBoxFor(x => x.Nickname)
-
             </div>
             <br />
         <div class="form-group">

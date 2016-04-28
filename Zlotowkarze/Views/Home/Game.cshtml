@@ -1,4 +1,4 @@
-﻿@model Zlotowkarze.Models.Question
+﻿@model Zlotowkarze.ViewModel.GameViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -70,7 +70,7 @@
     <div class="container" style="margin-left: 50px; margin-right: 10px;">
         <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" /> 
         <div class="col col-lg-5 question-box">
-            <h4>@Html.DisplayFor(model => model.Content)</h4>
+            <h4>@Html.DisplayFor(model => model.question.Content)</h4>
         </div>
         <div class="col col-lg-5 coin-box">
             <img src="~/App_Images/zlotowka.png" />
@@ -86,20 +86,20 @@
     <div class="col col-lg-12" style="margin-top: 50px;"></div>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
-        <input type="submit" value="Odpowiedź nr 1" class="answer-button" onclick="OnAnswer1Click()"/>
+        <input type="submit" value="@Html.DisplayFor(model => model.answers[0].Content)" class="answer-button" onclick="OnAnswer1Click()"/>
     </div>
     <div class="col col-lg-5 col-lg-offset-1">
-        <input type="submit" value="Odpowiedź nr 2" class="answer-button" onclick="OnAnswer2Click()" />
+        <input type="submit" value="@Html.DisplayFor(model => model.answers[1].Content)" class="answer-button" onclick="OnAnswer2Click()" />
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
     <div class="col col-lg-6" style="margin-top: 40px;"></div>
     <div class="col col-lg-6" style="margin-top: 40px;"></div>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
-        <input type="submit" value="Odpowiedź nr 3" class="answer-button" onclick="OnAnswer3Click()" />
+        <input type="submit" value="@Html.DisplayFor(model => model.answers[2].Content)" class="answer-button" onclick="OnAnswer3Click()" />
     </div>
     <div class="col col-lg-5 col-lg-offset-1">
-        <input type="submit" value="Odpowiedź nr 4" class="answer-button" onclick="OnAnswer4Click()" />
+        <input type="submit" value="@Html.DisplayFor(model => model.answers[3].Content)" class="answer-button" onclick="OnAnswer4Click()" />
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
 </body>
