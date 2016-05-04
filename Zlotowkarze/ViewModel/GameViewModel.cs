@@ -10,6 +10,7 @@ namespace Zlotowkarze.ViewModel
     {
         public Question question { get; set; }
         public IList<Answer> answers { get; set; }
+        public Login login { get; set; }
 
         public GameViewModel(Question q)
         {

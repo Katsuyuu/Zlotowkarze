@@ -18,7 +18,7 @@ namespace Zlotowkarze.Controllers
         // GET: Answers
         public ActionResult Index()
         {
-            var answers = db.Answers.Include(a => a.Question);
+            var answers = db.Answers;//.Include(a => a.Question);
             return View(answers.ToList());
         }
 

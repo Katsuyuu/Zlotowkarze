@@ -12,14 +12,7 @@ using Zlotowkarze.Models.DAL;
 namespace Zlotowkarze
 {
     public class MvcApplication : System.Web.HttpApplication
-    {
-        public string Nickname;
-
-        public MvcApplication()
-        {
-            this.Nickname = "Nickname";
-        }
-       
+    {    
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

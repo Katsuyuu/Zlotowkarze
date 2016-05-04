@@ -12,6 +12,6 @@ namespace Zlotowkarze.Models
         public int QuestionId { get; set; } 
         public string Content { get; set; }
         public bool IsTrue { get; set; }
-        public virtual Question Question { get; set; }
+        //public virtual Question Question { get; set; }
     }
 }

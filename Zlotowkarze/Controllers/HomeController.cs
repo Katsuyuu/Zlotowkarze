@@ -7,31 +7,51 @@ using Zlotowkarze.Models;
 using Zlotowkarze.Models.DAL;
 using Zlotowkarze.ViewModel;
 
+
 namespace Zlotowkarze.Controllers
 {
     public class HomeController : Controller
     {
         QuestionContext db = new QuestionContext();
-        string Nickname = "";
-        
+        Login login;
+
+        Random rand = new Random();
+        static List<int> usedQuestions = new List<int>();
+        int randomQuestion;
+        static int counter = 0;
+
+        public void SetLogin()
+        {
+            // utrzymanie tego samego loginu dla całej sesji
+            // bez tego ciągle tworzy nowy Login
+            login = (Login)Session["Login"];
+
+            if (login == null)
+            {
+                login = new Login();
+                Session["Login"] = login;
+            }
+        }
+
         [HttpGet]
         public ActionResult LoginScreen()
         {
+            SetLogin();
+
             return View();
         }
         
-
         [HttpPost]
-        public ActionResult LoginScreen(Login login)
+        public ActionResult LoginScreen(Login loginModel)
         {
-            Random rand = new Random();
+            SetLogin();
+
             int randomQuestion = rand.Next(1, 101);
-            GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
 
             if (ModelState.IsValid)
             {
-                this.Nickname = login.Nickname;
-                return View("Game", viewModel);
+                this.login.Nickname = loginModel.Nickname;
+                return RedirectToAction("Game");
             }
             else
             {
@@ -41,11 +61,45 @@ namespace Zlotowkarze.Controllers
 
         public ActionResult Game()
         {
-            Random rand = new Random();
-            int randomQuestion = rand.Next(1, 101);
-            GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
+            SetLogin();
 
-            return View(viewModel);
+            do
+            {
+                randomQuestion = rand.Next(1, 101);
+            } while (usedQuestions.Contains(randomQuestion));
+
+            usedQuestions.Add(randomQuestion);
+            GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
+            viewModel.login = login;
+
+            counter++;
+            if (counter <= 10)
+            {
+                return View(viewModel);
+            }
+            else
+            {
+                return RedirectToAction("Finish");
+            }
+        }
+
+        public void Points(Answer answer)
+        {
+            SetLogin();
+
+            if (answer.IsTrue)
+            {
+                this.login.Points++;
+            }
+            else
+            {
+                this.login.Points--;
+            }
+        }
+
+        public ActionResult Finish()
+        {
+            return View();
         }
     }
 }
