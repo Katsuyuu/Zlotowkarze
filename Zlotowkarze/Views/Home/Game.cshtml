@@ -44,47 +44,71 @@
             font-size: 24px;
         }
 
-        .coin-box {
+        #coin-box {
             margin: 0px 0px 0px 80px;
             padding: 0px 0px 0px 0px;
-            width: 415px;
+            width: 400px;
             height: 174px;
             border: solid 12px;
             border-color: black;
         }
     </style>
     <script type="text/javascript">
-    function Answer(answerNumber)
-    {
-        var el = document.getElementsByClassName("answer-button");
-
-        var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.answers));
-
-        el[answerNumber].classList.add("answer-button-dunno");
-        setTimeout(function()
+        function Answer(answerNumber)
         {
-            for (var i=0; i<4; i++)
-            {
-                if( model[i].IsTrue == true)
-                {
-                    el[i].classList.add("answer-button-right");
+            var el = document.getElementsByClassName("answer-button");
 
-                }
-                else
+            var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.answers));
+
+            el[answerNumber].classList.add("answer-button-dunno");
+            setTimeout(function()
+            {
+                for (var i=0; i<4; i++)
                 {
-                    el[i].classList.add("answer-button-wrong");
+                    if( model[i].IsTrue == true)
+                    {
+                        el[i].classList.add("answer-button-right");
+
+                    }
+                    else
+                    {
+                        el[i].classList.add("answer-button-wrong");
+                    }
+                }
+            }, 1000);
+
+            $.ajax({
+                url: "@Url.Action("Points", "Home")",
+                data: model[answerNumber]
+            });
+
+            setTimeout(function(){ window.location.href = '@Url.Action("Game", "Home")' }, 3000);
+        }
+
+
+        function Coins(n)
+        {
+            var points = n;
+            var elem = document.getElementById("coin-box"); 
+
+            if(n == 0)
+                return;
+            if(n > 0)
+            {
+                for(var i = 0; i < n; i++)
+                {
+                    elem.innerHTML += "<img src='../../App_Images/zlotowka.png'>";
                 }
             }
-        }, 1000);
-
-        $.ajax({
-            url: "@Url.Action("Points", "Home")",
-            data: model[answerNumber]
-        });
-
-        setTimeout(function(){ window.location.href = '@Url.Action("Game", "Home")' }, 3000);
-    }
-</script>
+            if(n < 0)
+            {
+                for(var i = 0; i > n; i--)
+                {
+                    elem.innerHTML += "<img src='../../App_Images/zlotowka-minusowa.png'>";
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -93,18 +117,10 @@
         <div class="col col-lg-5 question-box">
             <h4>@Html.DisplayFor(model => model.question.Content)</h4>
         </div>
-        <div class="col col-lg-5 coin-box">
-            <h1>@Model.login.Points</h1>
-            <!--
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            <img src="~/App_Images/zlotowka.png" />
-            -->
+        <div class="col col-lg-5" id="coin-box">
+            <script>
+                Coins(@Model.login.Points)
+            </script>
         </div>
     </div>
     <div class="col col-lg-12" style="margin-top: 50px;"></div>
