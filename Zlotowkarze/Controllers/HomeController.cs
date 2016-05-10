@@ -72,7 +72,6 @@ namespace Zlotowkarze.Controllers
             GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
             viewModel.login = login;
 
-            counter++;
             if (counter <= 10)
             {
                 return View(viewModel);
@@ -87,14 +86,23 @@ namespace Zlotowkarze.Controllers
         {
             SetLogin();
 
-            if (answer.IsTrue)
+            if (answer != null)
             {
-                this.login.Points++;
+                if (answer.IsTrue)
+                {
+                    this.login.Points++;
+                }
+                else
+                {
+                    this.login.Points--;
+                }
             }
             else
             {
                 this.login.Points--;
             }
+
+            counter++;
         }
 
         public ActionResult Finish()

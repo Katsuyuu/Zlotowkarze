@@ -47,20 +47,37 @@
         #coin-box {
             margin: 0px 0px 0px 80px;
             padding: 0px 0px 0px 0px;
-            width: 400px;
+            width: 399px;
             height: 174px;
             border: solid 12px;
             border-color: black;
         }
+
+        #timer {
+            text-align: center;
+            width: auto;
+        }
+
+        input:disabled {
+            color: black;
+        }
     </style>
     <script type="text/javascript">
+        var run = true;
+
         function Answer(answerNumber)
         {
             var el = document.getElementsByClassName("answer-button");
+            el[0].disabled = 'true'; // nie chcialo mi sie robic for-a, sorki :D
+            el[1].disabled = 'true';
+            el[2].disabled = 'true';
+            el[3].disabled = 'true';
+            run = false;
 
             var model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.answers));
+            if(answerNumber != null)
+                el[answerNumber].classList.add("answer-button-dunno");
 
-            el[answerNumber].classList.add("answer-button-dunno");
             setTimeout(function()
             {
                 for (var i=0; i<4; i++)
@@ -76,11 +93,20 @@
                     }
                 }
             }, 1000);
-
-            $.ajax({
-                url: "@Url.Action("Points", "Home")",
-                data: model[answerNumber]
+            if(answerNumber != null)
+            {
+                $.ajax({
+                    url: "@Url.Action("Points", "Home")",
+                    data: model[answerNumber]
+                });
+            }
+            else
+            {
+                $.ajax({
+                    url: "@Url.Action("Points", "Home")",
+                    data: null
             });
+            }
 
             setTimeout(function(){ window.location.href = '@Url.Action("Game", "Home")' }, 3000);
         }
@@ -108,14 +134,51 @@
                 }
             }
         }
+    
+
+        function StartTimer()
+        {
+            var start = Date.now(),
+                diff, 
+                minutes, 
+                seconds;
+            var duration = 30;
+            var display = document.querySelector("#timer");           
+            
+            function timer() 
+            {
+                if (run == true)
+                {
+                    diff = duration - (((Date.now() - start) / 1000) | 0);
+
+                    minutes = (diff / 60) | 0;
+                    seconds = (diff % 60) | 0;
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    display.textContent = minutes + ":" + seconds;
+                }
+                if (diff < 0 && run == true)
+                {
+                    display.textContent = "00:00";
+                    Answer(null);
+                    run = false;
+                }
+            };
+            
+            timer();
+            
+            setInterval(timer, 1000);
+        }    
     </script>
 </head>
 
 <body>
     <div class="container" style="margin-left: 50px; margin-right: 10px;">
-        <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" /> 
+        <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" />
         <div class="col col-lg-5 question-box">
-            <h4>@Html.DisplayFor(model => model.question.Content)</h4>
+            <h3>@Html.DisplayFor(model => model.question.Content)</h3>
         </div>
         <div class="col col-lg-5" id="coin-box">
             <script>
@@ -132,8 +195,11 @@
         <input type="button" value="@Html.DisplayFor(model => model.answers[1].Content)" class="answer-button" onclick="Answer(1)" />
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
-    <div class="col col-lg-6" style="margin-top: 40px;"></div>
-    <div class="col col-lg-6" style="margin-top: 40px;"></div>
+    <h1 id="timer">
+            <script>
+                StartTimer();
+            </script>
+    </h1>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
         <input type="button" value="@Html.DisplayFor(model => model.answers[2].Content)" class="answer-button" onclick="Answer(2)" />
