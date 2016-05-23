@@ -14,11 +14,16 @@
         .answer-button {
             height: 100px; 
             width: 300px; 
-            margin: 20px 10px 0px 10px; 
+            margin: 15px 10px 0px 10px; 
+            border-radius: 25px;
             background-color: white; 
             border: solid 8px; 
-            border-color: black;
             white-space: normal;
+            outline: none;
+        }
+
+        .answer-button:hover{
+            background-color: #dddddd;
         }
 
         .answer-button-wrong {
@@ -30,6 +35,10 @@
         }
 
         .answer-button-dunno {
+            background-color: yellow;
+        }
+
+        .answer-button-dunno:hover {
             background-color: yellow;
         }
 
@@ -46,7 +55,7 @@
 
         #coin-box {
             margin: 0px 0px 0px 80px;
-            padding: 0px 0px 0px 0px;
+            padding: 0px;
             width: 399px;
             height: 174px;
             border: solid 12px;
@@ -142,11 +151,15 @@
                 diff, 
                 minutes, 
                 seconds;
-            var duration = 30;
+            var duration = 1;
             var display = document.querySelector("#timer");           
             
-            function timer() 
+            function timer()
             {
+                if (display.textContent == "00:06")
+                {
+                    display.setAttribute("style", "color: red");
+                }
                 if (run == true)
                 {
                     diff = duration - (((Date.now() - start) / 1000) | 0);
@@ -171,6 +184,7 @@
             
             setInterval(timer, 1000);
         }    
+
     </script>
 </head>
 
@@ -178,7 +192,7 @@
     <div class="container" style="margin-left: 50px; margin-right: 10px;">
         <img src="~/App_Images/sir.png" style="width: 140px; height: 190px; float:left;" />
         <div class="col col-lg-5 question-box">
-            <h3>@Html.DisplayFor(model => model.question.Content)</h3>
+            <h3>@Model.numberOfQuestion. @Html.DisplayFor(model => model.question.Content)</h3>
         </div>
         <div class="col col-lg-5" id="coin-box">
             <script>
@@ -192,7 +206,7 @@
         <input type="button" value="@Html.DisplayFor(model => model.answers[0].Content)" class="answer-button" onclick="Answer(0)" />
     </div>
     <div class="col col-lg-5 col-lg-offset-1">
-        <input type="button" value="@Html.DisplayFor(model => model.answers[1].Content)" class="answer-button" onclick="Answer(1)" />
+        <input type="button" value="@Html.DisplayFor(model => model.answers[1].Content)" class="answer-button" onclick="Answer(1)"/>
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
     <h1 id="timer">

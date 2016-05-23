@@ -1,7 +1,107 @@
-﻿
+﻿@model Zlotowkarze.ViewModel.FinishViewModel
+
 @{
     ViewBag.Title = "Finish";
 }
 
-<h2>Finish</h2>
+<head>
+    <title>Finish</title>
+    <style>
+        #score-box{
+            border: solid 12px;
+            padding: 15px;
+            border-color: black;
+            text-align: center;
+            width: auto;
+            height: 174px;
+            font-size: 42px;
+        }
 
+        #pic{
+            height: 150px;         
+        }
+
+        #pic img{
+            border: solid 12px black;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+
+            var nick = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.login.Nickname));
+            var points = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(this.Model.login.Points));
+            var $score = $('#score-box').text(function () {
+                return this.textContent += points;
+            })
+
+            var $pic = $('#pic').html(function () {
+                if (points == 0){
+                    return '<p>Testowanie</p>';
+                }
+                else if (points > 0){
+                    return '<img src="../../App_Images/yay2.png" />';
+                }
+                else if(points < 0){
+                    return '<img src="../../App_Images/Feels-bad-man2.png" style="height: 200px; width: 175px;" />';
+                }
+                else{
+                    return '<p>Ups ...</p>';
+                }
+            });
+
+            var $tf = $('.tf').html(function () {
+                if (this.textContent == 'True') {
+                    return '<p style="color: green;"><b>True</b></p>'
+                }
+                else if(this.textContent == 'False') {
+                    return '<p style="color: red;"><b>False</b></p>'
+                }
+
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-8">
+            <div id="score-box">
+                @Model.login.Nickname,&#13;&#10;Twój wynik to:</span>
+            </div>
+        </div>
+        <div id="pic" class="col-md-offset-1 col-md-3"></div>
+    </div>
+        <div style="margin-top: 100px;"></div>
+    <div class="container">
+        <div class="col-md-12" style="margin-bottom: 50px;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Treść pytania</th>
+                        <th>Odpowiedź</th>
+                        <th>True/False</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1).</td>
+                            <td>@Model.usedQuestions[i].Content</td>
+                            <td>@Model.usedAnswers[i].Content</td>
+                            <td class="tf">@Model.usedAnswers[i].IsTrue.ToString()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3 col-md-offset-2">
+            <input id="buttonRestart" type="button" class="btn btn-info btn-lg btn-block" value="Dawaj jeszcze raz!" />
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            <input id ="buttonQuit" type="button" class="btn btn-info btn-lg btn-block" value="Starcz tego na dzisiaj!"/>
+        </div>
+    </div>
+</body>

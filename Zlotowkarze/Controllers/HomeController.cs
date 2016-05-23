@@ -14,22 +14,30 @@ namespace Zlotowkarze.Controllers
     {
         QuestionContext db = new QuestionContext();
         Login login;
+        static FinishViewModel finishVM;
 
         Random rand = new Random();
         static List<int> usedQuestions = new List<int>();
         int randomQuestion;
         static int counter = 0;
+        static int numberOfQuestion = 1;
 
         public void SetLogin()
         {
             // utrzymanie tego samego loginu dla całej sesji
             // bez tego ciągle tworzy nowy Login
             login = (Login)Session["Login"];
+            finishVM = (FinishViewModel)Session["FinishVM"];
 
             if (login == null)
             {
                 login = new Login();
                 Session["Login"] = login;
+            }
+            if (finishVM == null)
+            {
+                finishVM = new FinishViewModel(login);
+                Session["FinishVM"] = finishVM;
             }
         }
 
@@ -46,7 +54,7 @@ namespace Zlotowkarze.Controllers
         {
             SetLogin();
 
-            int randomQuestion = rand.Next(1, 101);
+            //int randomQuestion = rand.Next(1, 101);
 
             if (ModelState.IsValid)
             {
@@ -71,9 +79,11 @@ namespace Zlotowkarze.Controllers
             usedQuestions.Add(randomQuestion);
             GameViewModel viewModel = new GameViewModel(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
             viewModel.login = login;
+            viewModel.numberOfQuestion = numberOfQuestion++;
 
-            if (counter <= 10)
+            if (counter < 10)
             {
+                finishVM.usedQuestions.Add(db.Questions.Where(x => x.Id == randomQuestion).FirstOrDefault());
                 return View(viewModel);
             }
             else
@@ -85,6 +95,7 @@ namespace Zlotowkarze.Controllers
         public void Points(Answer answer)
         {
             SetLogin();
+            finishVM.usedAnswers.Add(answer);
 
             if (answer != null)
             {
@@ -107,7 +118,7 @@ namespace Zlotowkarze.Controllers
 
         public ActionResult Finish()
         {
-            return View();
+            return View(finishVM);
         }
     }
 }
