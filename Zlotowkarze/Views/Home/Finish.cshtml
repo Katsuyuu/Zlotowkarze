@@ -36,13 +36,13 @@
 
             var $pic = $('#pic').html(function () {
                 if (points == 0){
-                    return '<p>Testowanie</p>';
+                    return '<img src="../../App_Images/ok.png" />';
                 }
                 else if (points > 0){
-                    return '<img src="../../App_Images/yay2.png" />';
+                    return '<img src="../../App_Images/yay.png" />';
                 }
                 else if(points < 0){
-                    return '<img src="../../App_Images/Feels-bad-man2.png" style="height: 200px; width: 175px;" />';
+                    return '<img src="../../App_Images/Feels-bad-man.png" />';
                 }
                 else{
                     return '<p>Ups ...</p>';
@@ -61,12 +61,12 @@
         });
     </script>
     <script type="text/javascript">
-    $(function () {
-        $('#buttonRestart').on('click', function() {
+        $(function () {
+            $('#buttonRestart').on('click', function() {
 
             window.location.href = '@Url.Action("Restart", "Home")'
+            });
         });
-    });
     </script>
 </head>
 
@@ -74,7 +74,8 @@
     <div class="container">
         <div class="col-md-8">
             <div id="score-box">
-                @Model.login.Nickname, Twój wynik to:
+                <span>@Model.login.Nickname,</span>
+                <span>Twój wynik to:</span>
             </div>
         </div>
         <div id="pic" class="col-md-offset-1 col-md-3"></div>

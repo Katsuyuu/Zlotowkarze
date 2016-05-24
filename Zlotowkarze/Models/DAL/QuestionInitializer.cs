@@ -20,31 +20,27 @@ namespace Zlotowkarze.Models.DAL
             {
                 new Answer
                 {
-                    //Question = question,
                     QuestionId = question.Id,
                     IsTrue = true,
                     Content = "Tak"
                 },
                 new Answer
                 {
-                    //Question = question,
                     QuestionId = question.Id,
                     IsTrue = false,
                     Content = "Nie"                    
                 },
                 new Answer
                 {
-                    //Question = question,
                     QuestionId = question.Id,
                     IsTrue = false,
                     Content = "Nie wiem"                    
                 },
                 new Answer
                 {
-                    //Question = question,
                     QuestionId = question.Id,
                     IsTrue = false,
-                    Content = "Lubie placki"               
+                    Content = "Odpowiedz nr 4"               
                 }
             };
             

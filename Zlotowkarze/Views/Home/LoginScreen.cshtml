@@ -18,6 +18,13 @@
             font-size: 16px;
         }
     </style>
+    <script type="text/javascript">
+        $(function () {
+            $('#help').on('click', function () {
+                alert('Witaj w Centrum Pomocy!\n \nDrogi Uczestniku! Za chwilę zobaczysz panel rozgrywki gry "Złotówkarze". 10 pytań - 10 złotówek. Odpowiadaj poprawnie na pytania i zdobywaj złotówki! Ale uważaj! za złą odpowiedź są one odejmowane. Na każde pytanie masz 20 sekund. I jak? Gotowy? To start!\nMiłej zabawy!');
+            });
+        });
+    </script>
 </head>
 
 <body style="background-image: url('../../App_Images/whoa.png'); background-repeat:no-repeat;">
@@ -28,7 +35,7 @@
         @using (Html.BeginForm())
         {
             <div class="text-center" data-dissmiss="alert">
-                @Html.ValidationSummary(true, "Ty buntowniku! Mimo wszystko musisz podać swój Nickname :)", htmlAttributes: new { @class = "alert alert-danger h5" })
+                @Html.ValidationSummary(true, "Ty buntowniku! Mimo wszystko musisz podać swój Nickname :)", htmlAttributes: new { @class = "col col-lg-offset-1 col-lg-10 alert alert-danger h5" })
                 @Html.TextBoxFor(x => x.Nickname, new { @maxlength = "20", @autocomplete = "off" })
             </div>
             <br />

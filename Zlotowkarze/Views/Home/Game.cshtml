@@ -145,8 +145,7 @@
                     elem.innerHTML += "<img src='../../App_Images/zlotowka-minusowa.png'>";
                 }
             }
-        }
-    
+        }    
 
         function StartTimer()
         {
@@ -189,31 +188,21 @@
             setInterval(timer, 1000);
         }    
 
-        $('#timer').on('load', StartTimer());
-
-    </script>
-    <script type="text/javascript">
-
-    $(function () {
-        $(document).on('keydown', function () {
-            if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82)
-                e.preventDefault();
+        $(function () {
+            $('#timer').on('load', StartTimer());
         });
-    });
 
     </script>
     <script type="text/javascript">
-
         $(function () {
             $(window).on('beforeunload', function () {
-                if (refresh == true)
+                if (refresh == true) 
                     $.ajax({
                         url: "@Url.Action("Points", "Home")",
                         data: null
                     });
             });
         });
-
     </script>
 </head>
 

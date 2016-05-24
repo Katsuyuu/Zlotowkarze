@@ -14,7 +14,6 @@ namespace Zlotowkarze.Models
 
         public Login()
         {
-
             Points = 0;
         }
     }

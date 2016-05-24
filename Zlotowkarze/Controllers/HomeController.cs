@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 using Zlotowkarze.Models;
 using Zlotowkarze.Models.DAL;
 using Zlotowkarze.ViewModel;
@@ -21,11 +22,10 @@ namespace Zlotowkarze.Controllers
         int randomQuestion;
         static int counter;
         static int numberOfQuestion;
+        bool refresh = false;
 
         public void SetLogin()
         {
-            // utrzymanie tego samego loginu dla całej sesji
-            // bez tego ciągle tworzy nowy Login
             login = (Login)Session["Login"];
             finishVM = (FinishViewModel)Session["FinishVM"];
 
@@ -58,8 +58,6 @@ namespace Zlotowkarze.Controllers
         public ActionResult LoginScreen(Login loginModel)
         {
             SetLogin();
-
-            //int randomQuestion = rand.Next(1, 101);
 
             if (ModelState.IsValid)
             {
