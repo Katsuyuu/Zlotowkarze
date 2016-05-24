@@ -17,7 +17,7 @@ namespace Zlotowkarze.Models.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); // usuniecie konwencji tworzenia tabel w liczbie mnogiej
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
         }
     }

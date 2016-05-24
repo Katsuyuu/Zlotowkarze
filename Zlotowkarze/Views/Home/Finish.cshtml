@@ -60,13 +60,21 @@
             })
         });
     </script>
+    <script type="text/javascript">
+    $(function () {
+        $('#buttonRestart').on('click', function() {
+
+            window.location.href = '@Url.Action("Restart", "Home")'
+        });
+    });
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="col-md-8">
             <div id="score-box">
-                @Model.login.Nickname,&#13;&#10;Twój wynik to:</span>
+                @Model.login.Nickname, Twój wynik to:
             </div>
         </div>
         <div id="pic" class="col-md-offset-1 col-md-3"></div>
@@ -96,12 +104,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-3 col-md-offset-2">
-            <input id="buttonRestart" type="button" class="btn btn-info btn-lg btn-block" value="Dawaj jeszcze raz!" />
-        </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-3">
-            <input id ="buttonQuit" type="button" class="btn btn-info btn-lg btn-block" value="Starcz tego na dzisiaj!"/>
+        <div class="col-md-6 col-md-offset-3">
+            <button id="buttonRestart" type="button" class="btn btn-info btn-lg btn-block" style="font-size: 24px;">Dawaj jeszcze raz!</button>
         </div>
     </div>
 </body>

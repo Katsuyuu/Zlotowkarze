@@ -21,7 +21,6 @@ namespace Zlotowkarze
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
             var questionContext = new QuestionContext();
-            //Database.SetInitializer(new QuestionInitializer());
             questionContext.Database.Initialize(true);            
         }
     }

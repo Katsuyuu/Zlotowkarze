@@ -17,10 +17,10 @@ namespace Zlotowkarze.Controllers
         static FinishViewModel finishVM;
 
         Random rand = new Random();
-        static List<int> usedQuestions = new List<int>();
+        static List<int> usedQuestions;
         int randomQuestion;
-        static int counter = 0;
-        static int numberOfQuestion = 1;
+        static int counter;
+        static int numberOfQuestion;
 
         public void SetLogin()
         {
@@ -44,7 +44,12 @@ namespace Zlotowkarze.Controllers
         [HttpGet]
         public ActionResult LoginScreen()
         {
+            Session.Contents.RemoveAll();
             SetLogin();
+
+            usedQuestions = new List<int>();
+            counter = 0;
+            numberOfQuestion = 1;
 
             return View();
         }
@@ -119,6 +124,11 @@ namespace Zlotowkarze.Controllers
         public ActionResult Finish()
         {
             return View(finishVM);
+        }
+
+        public ActionResult Restart()
+        {
+            return RedirectToAction("LoginScreen");
         }
     }
 }

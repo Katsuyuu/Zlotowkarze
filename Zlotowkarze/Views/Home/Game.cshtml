@@ -73,11 +73,12 @@
     </style>
     <script type="text/javascript">
         var run = true;
+        var refresh = true;
 
         function Answer(answerNumber)
         {
             var el = document.getElementsByClassName("answer-button");
-            el[0].disabled = 'true'; // nie chcialo mi sie robic for-a, sorki :D
+            el[0].disabled = 'true';
             el[1].disabled = 'true';
             el[2].disabled = 'true';
             el[3].disabled = 'true';
@@ -108,13 +109,15 @@
                     url: "@Url.Action("Points", "Home")",
                     data: model[answerNumber]
                 });
+                refresh = false;
             }
             else
             {
                 $.ajax({
                     url: "@Url.Action("Points", "Home")",
                     data: null
-            });
+                });
+                refresh = false;
             }
 
             setTimeout(function(){ window.location.href = '@Url.Action("Game", "Home")' }, 3000);
@@ -151,7 +154,7 @@
                 diff, 
                 minutes, 
                 seconds;
-            var duration = 1;
+            var duration = 20;
             var display = document.querySelector("#timer");           
             
             function timer()
@@ -177,6 +180,7 @@
                     display.textContent = "00:00";
                     Answer(null);
                     run = false;
+                    refresh = false;
                 }
             };
             
@@ -184,6 +188,31 @@
             
             setInterval(timer, 1000);
         }    
+
+        $('#timer').on('load', StartTimer());
+
+    </script>
+    <script type="text/javascript">
+
+    $(function () {
+        $(document).on('keydown', function () {
+            if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82)
+                e.preventDefault();
+        });
+    });
+
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+            $(window).on('beforeunload', function () {
+                if (refresh == true)
+                    $.ajax({
+                        url: "@Url.Action("Points", "Home")",
+                        data: null
+                    });
+            });
+        });
 
     </script>
 </head>
@@ -209,11 +238,7 @@
         <input type="button" value="@Html.DisplayFor(model => model.answers[1].Content)" class="answer-button" onclick="Answer(1)"/>
         <img src="~/App_Images/challenge-lewo.png" style="height: 160px; width: 100px;" />
     </div>
-    <h1 id="timer">
-            <script>
-                StartTimer();
-            </script>
-    </h1>
+    <h1 id="timer"></h1>
     <div class="col col-lg-5 col-lg-offset-1">
         <img src="~/App_Images/challenge-prawo.png" style="height: 160px; width: 100px;" />
         <input type="button" value="@Html.DisplayFor(model => model.answers[2].Content)" class="answer-button" onclick="Answer(2)" />
